@@ -1,5 +1,26 @@
 # ssombt
 
+## Example:
+
+```
+#!/bin/bash
+_UID=$(id -u)
+_GID=$(id -g)
+
+mkdir ./ss
+sudo mount -t cifs //192.168.1.10/surveillance/ -o username=admin,password=admin,uid=$_UID,gid=$_GID ./ss
+
+$(which ssombt) \
+ --source-paths ./ss/CAM_A ./ss/CAM_B \
+ --output-path ~/.ssombt_temp \
+ --delete \
+ --password my_password \
+ --disk-size 25G \
+ --parity 10
+```
+
+## Usage:
+
 ```
 ssombt:
   Synology Surveillance Station Optical Media Backup Tool
